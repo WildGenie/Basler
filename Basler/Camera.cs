@@ -5,6 +5,7 @@ using Basler.Pylon;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using System.Runtime.InteropServices;
 
 /// <summary>
 /// 相机功能定义 & 描述
@@ -12,7 +13,13 @@ using System.Collections.Generic;
 namespace Basler
 {
     public partial class Basler : Form
-    {
+    { 
+        [DllImport("kernel32.dll")]
+        public static extern void CopyMemory(IntPtr Destination, IntPtr Source, int Length);
+
+        Bitmap myBitmap = null;
+        Bitmap copyBitmap = null;
+
         /// <summary>
         /// 成功打开相机
         /// </summary>
@@ -83,20 +90,32 @@ namespace Basler
                         myStopWatch.Restart();
 
                         // 实例化位图对象,图像大小指定为 相机已抓取图象的大小,此处内存未被赋值
-                        Bitmap myBitmap = new Bitmap(grabResult.Width, grabResult.Height, PixelFormat.Format32bppRgb);
-                        textBox1.Text = $"height:{grabResult.Height}\r\n" + $"width:{grabResult.Width}";
-                        // 将 myBitmap 锁定到 myBitmapData 内存中以便进行位图像素格式转换
+                        myBitmap = new Bitmap(grabResult.Width, grabResult.Height, PixelFormat.Format32bppRgb);
+                        if (copyBitmap == null)
+                        {
+                            copyBitmap = new Bitmap(grabResult.Width, grabResult.Height, PixelFormat.Format32bppRgb);
+                        }
+                        // 使用
                         BitmapData myBitmapData = myBitmap.LockBits(new Rectangle(0, 0, myBitmap.Width, myBitmap.Height), ImageLockMode.ReadWrite, myBitmap.PixelFormat);
+                       
+                        BitmapData copyBitmapData = copyBitmap.LockBits(new Rectangle(0, 0, copyBitmap.Width, copyBitmap.Height), ImageLockMode.ReadWrite, copyBitmap.PixelFormat);
+
                         // 设定转换的图像像素格式
                         converter.OutputPixelFormat = PixelType.BGRA8packed;
                         // 获取 锁定的图象内存指针
                         IntPtr ptrBmp = myBitmapData.Scan0;
                         // 将grabResult中的数据按照指定的内存大小及像素格式转换到ptrBmp所指向(myBitmapData)的内存区域。
                         converter.Convert(ptrBmp, myBitmapData.Stride * myBitmap.Height, grabResult);
+
+                        CopyMemory(copyBitmapData.Scan0, myBitmapData.Scan0, myBitmapData.Stride * myBitmap.Height);
+
+                        copyBitmap.UnlockBits(copyBitmapData);
                         // 解锁内存
                         myBitmap.UnlockBits(myBitmapData);
                         //显示新的图象
-                        pictureBox.Image = myBitmap;
+                        //pictureBox.Image = myBitmap;
+
+                        pictureBox.Invalidate();
                     }
                 }
             }

@@ -5,6 +5,7 @@ using Basler.Pylon;
 using System.Diagnostics;
 using System.Drawing.Imaging;
 using System.Collections.Generic;
+using static System.Environment;
 
 
 /// <summary>
@@ -116,16 +117,65 @@ namespace Basler
             ContinueShotButton.Enabled = CtnuShotBtnSta;
         }
 
+        /// <summary>
+        /// 放大图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ZoomOut_Click(object sender, EventArgs e)
         {
             pictureBox.Width = (int)((float)(pictureBox.Width) * 1.2);
             pictureBox.Height = (int)((float)(pictureBox.Height) * 1.2);
         }
 
+        /// <summary>
+        /// 缩小图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
         private void ZoomIn_Click(object sender, EventArgs e)
         {
             pictureBox.Width = (int)((float)(pictureBox.Width) / 1.2);
             pictureBox.Height = (int)((float)(pictureBox.Height) / 1.2);
+        }
+
+        /// <summary>
+        /// 保存图片
+        /// </summary>
+        /// <param name="sender"></param>
+        /// <param name="e"></param>
+        private void SavePicture_Click(object sender, EventArgs e)
+        {
+            if (InvokeRequired)
+            {
+                BeginInvoke(new EventHandler<EventArgs>(SavePicture_Click), sender, e);
+            }
+            try
+            {
+                if (myBitmap != null)
+                {
+                    SaveFileDialog saveDialog = new SaveFileDialog();
+                    saveDialog.InitialDirectory = GetFolderPath(SpecialFolder.Desktop).ToString();
+                    saveDialog.Filter = "位图文件*.bmp*|*.bmp*";
+                    if (saveDialog.ShowDialog() == DialogResult.OK)
+                    {
+                        myBitmap.Save(saveDialog.FileName+".bmp");
+                        MessageBox.Show("保存成功");
+                    }
+                    else
+                    {
+                        MessageBox.Show("未保存");
+                    }
+                }
+                else
+                {
+                    MessageBox.Show("未获取到照片,保存失败");
+                }
+            }
+            catch (Exception E)
+            {
+                ShowException(sender,E);
+            }
         }
     }
 }

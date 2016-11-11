@@ -69,5 +69,14 @@ namespace Basler
         {
             MessageBox.Show($"异常源 : {E.Source}\r\n异常信息 : {E.Message}", "警告");
         }
+
+        private void pictureBox_Paint(object sender, PaintEventArgs e)
+        {
+            if (copyBitmap == null)
+            {
+                return;
+            }
+            e.Graphics.DrawImage(copyBitmap, new Rectangle(0, 0, pictureBox.Width, pictureBox.Height), new Rectangle(0, 0, copyBitmap.Width, copyBitmap.Height), GraphicsUnit.Pixel);
+        }
     }
 }
