@@ -1,0 +1,11 @@
+F:\Documents\C#\Basler\Basler\bin\Release\Basler.exe.config
+F:\Documents\C#\Basler\Basler\bin\Release\Basler.exe
+F:\Documents\C#\Basler\Basler\bin\Release\Basler.pdb
+F:\Documents\C#\Basler\Basler\bin\Release\Basler.Pylon.dll
+F:\Documents\C#\Basler\Basler\bin\Release\Basler.Pylon.xml
+F:\Documents\C#\Basler\Basler\obj\Release\Basler.csprojResolveAssemblyReference.cache
+F:\Documents\C#\Basler\Basler\obj\Release\Basler.Basler.resources
+F:\Documents\C#\Basler\Basler\obj\Release\Basler.Properties.Resources.resources
+F:\Documents\C#\Basler\Basler\obj\Release\Basler.csproj.GenerateResource.Cache
+F:\Documents\C#\Basler\Basler\obj\Release\Basler.exe
+F:\Documents\C#\Basler\Basler\obj\Release\Basler.pdb

@@ -1,0 +1,2 @@
+F:\Documents\C#\Basler\Basler\Basler\bin\Debug\Basler.exe.config
+F:\Documents\C#\Basler\Basler\bin\Debug\Basler.exe.config

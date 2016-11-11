@@ -1,0 +1,8 @@
+F:\Documents\C#\Basler\TEST\bin\x86\Release\TEST.exe.config
+F:\Documents\C#\Basler\TEST\bin\x86\Release\TEST.exe
+F:\Documents\C#\Basler\TEST\bin\x86\Release\Basler.Pylon.dll
+F:\Documents\C#\Basler\TEST\bin\x86\Release\Basler.Pylon.xml
+F:\Documents\C#\Basler\TEST\obj\x86\Release\TEST.Test.resources
+F:\Documents\C#\Basler\TEST\obj\x86\Release\TEST.Properties.Resources.resources
+F:\Documents\C#\Basler\TEST\obj\x86\Release\TEST.csproj.GenerateResource.Cache
+F:\Documents\C#\Basler\TEST\obj\x86\Release\TEST.exe

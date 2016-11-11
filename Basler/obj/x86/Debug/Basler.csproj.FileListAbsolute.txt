@@ -1,0 +1,11 @@
+F:\Documents\C#\Basler\Basler\bin\x86\Debug\Basler.exe.config
+F:\Documents\C#\Basler\Basler\bin\x86\Debug\Basler.exe
+F:\Documents\C#\Basler\Basler\bin\x86\Debug\Basler.pdb
+F:\Documents\C#\Basler\Basler\bin\x86\Debug\Basler.Pylon.dll
+F:\Documents\C#\Basler\Basler\bin\x86\Debug\Basler.Pylon.xml
+F:\Documents\C#\Basler\Basler\obj\x86\Debug\Basler.csprojResolveAssemblyReference.cache
+F:\Documents\C#\Basler\Basler\obj\x86\Debug\Basler.Properties.Resources.resources
+F:\Documents\C#\Basler\Basler\obj\x86\Debug\Basler.csproj.GenerateResource.Cache
+F:\Documents\C#\Basler\Basler\obj\x86\Debug\Basler.exe
+F:\Documents\C#\Basler\Basler\obj\x86\Debug\Basler.pdb
+F:\Documents\C#\Basler\Basler\obj\x86\Debug\Basler.Basler.resources
